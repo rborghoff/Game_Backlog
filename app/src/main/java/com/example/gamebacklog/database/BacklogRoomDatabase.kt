@@ -27,6 +27,17 @@ abstract class BacklogRoomDatabase : RoomDatabase() {
                             context.applicationContext,BacklogRoomDatabase::class.java,DATABASE_NAME
                         )
                             .allowMainThreadQueries()
+                            .addCallback(object : RoomDatabase.Callback() {
+                                override fun onCreate(db: SupportSQLiteDatabase) {
+                                    super.onCreate(db)
+                                    INSTANCE?.let { database ->
+                                        CoroutineScope(Dispatchers.IO).launch {
+                                            database.backlogDao().insertBacklog(Backlog("Title", "title",2, "maandag",3))
+                                        }
+                                    }
+                                }
+                            })
+
                             .build()
                     }
 

@@ -16,7 +16,7 @@ class AddActivityViewModel (application: Application): AndroidViewModel(applicat
     private val mainScope = CoroutineScope(Dispatchers.Main)
 
     val backlog = MutableLiveData<Backlog?>()
-    val error = MutableLiveData<String>()
+    val error = MutableLiveData<String?>()
     val succes = MutableLiveData<Boolean>()
 
     fun updateBacklog(){
@@ -27,7 +27,6 @@ class AddActivityViewModel (application: Application): AndroidViewModel(applicat
                 }
                 succes.value = true
             }
-
         }
     }
     private fun isEntryValid():Boolean{

@@ -31,12 +31,18 @@ class BacklogAdapter (private val backlog: List<Backlog>) : RecyclerView.Adapter
 
         private val etTitle: TextView = itemView.findViewById(R.id.tvTitle)
         private val etConsole: TextView = itemView.findViewById(R.id.tvConsole)
-        private val etDate: TextView = itemView.findViewById(R.id.tvDate)
+        private val etDag: TextView = itemView.findViewById(R.id.tvDate)
+        private val etmaand: TextView = itemView.findViewById(R.id.tvDate)
+        private val etjaar: TextView = itemView.findViewById(R.id.tvDate)
 
 
         fun bind(backlog: Backlog) {
             etTitle.text = backlog.title
             etConsole.text = backlog.platform
+            etDag.text = backlog.dag.toString()
+            etmaand.text =backlog.maand
+            etjaar.text = backlog.jaar.toString()
+
 
 
 
